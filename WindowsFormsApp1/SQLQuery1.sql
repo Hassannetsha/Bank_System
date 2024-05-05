@@ -1,1 +1,0 @@
-﻿create table hamda(name varchar(50));
