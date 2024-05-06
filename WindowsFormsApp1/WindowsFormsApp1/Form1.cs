@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 F2 = new Form2(this);
+            Form2 F2 = new Form2();
 
             F2.Show();
         }
