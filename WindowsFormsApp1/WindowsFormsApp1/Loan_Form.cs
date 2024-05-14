@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Loan_Form : Form
     {
-        public Form1()
+        public Loan_Form()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void Loan_Form_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form2 F2 = new Form2();
-            F2.Show();
         }
     }
 }
