@@ -22,5 +22,10 @@ namespace WindowsFormsApp1
             BankForm bankForm = new BankForm();
             bankForm.Show();
         }
+
+        private void btnBranch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
