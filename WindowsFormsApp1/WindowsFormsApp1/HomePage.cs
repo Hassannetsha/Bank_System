@@ -24,13 +24,17 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 F2 = new Form2();
-            F2.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AdminBtn_Click(object sender, EventArgs e)
+        {
+            AdminForm F2 = new AdminForm();
+            F2.Show();
         }
     }
 }

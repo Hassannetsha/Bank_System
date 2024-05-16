@@ -47,36 +47,39 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label1.Location = new System.Drawing.Point(251, 56);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(335, 69);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.Size = new System.Drawing.Size(128, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Bank System";
             // 
             // AdminBtn
             // 
-            this.AdminBtn.Location = new System.Drawing.Point(239, 125);
+            this.AdminBtn.Location = new System.Drawing.Point(319, 154);
+            this.AdminBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AdminBtn.Name = "AdminBtn";
-            this.AdminBtn.Size = new System.Drawing.Size(127, 44);
+            this.AdminBtn.Size = new System.Drawing.Size(169, 54);
             this.AdminBtn.TabIndex = 5;
             this.AdminBtn.Text = "Admin";
             this.AdminBtn.UseVisualStyleBackColor = true;
+            this.AdminBtn.Click += new System.EventHandler(this.AdminBtn_Click);
             // 
             // EmployeeBtn
             // 
-            this.EmployeeBtn.Location = new System.Drawing.Point(239, 184);
+            this.EmployeeBtn.Location = new System.Drawing.Point(319, 226);
+            this.EmployeeBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EmployeeBtn.Name = "EmployeeBtn";
-            this.EmployeeBtn.Size = new System.Drawing.Size(127, 44);
+            this.EmployeeBtn.Size = new System.Drawing.Size(169, 54);
             this.EmployeeBtn.TabIndex = 6;
             this.EmployeeBtn.Text = "Employee";
             this.EmployeeBtn.UseVisualStyleBackColor = true;
             // 
             // CustomerBtn
             // 
-            this.CustomerBtn.Location = new System.Drawing.Point(239, 243);
+            this.CustomerBtn.Location = new System.Drawing.Point(319, 299);
+            this.CustomerBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CustomerBtn.Name = "CustomerBtn";
-            this.CustomerBtn.Size = new System.Drawing.Size(127, 44);
+            this.CustomerBtn.Size = new System.Drawing.Size(169, 54);
             this.CustomerBtn.TabIndex = 7;
             this.CustomerBtn.Text = "Customer";
             this.CustomerBtn.UseVisualStyleBackColor = true;
@@ -84,14 +87,14 @@
             // 
             // HomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CustomerBtn);
             this.Controls.Add(this.EmployeeBtn);
             this.Controls.Add(this.AdminBtn);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HomePage";
             this.Text = "Form1";
             this.ResumeLayout(false);
