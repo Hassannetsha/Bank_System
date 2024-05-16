@@ -28,13 +28,20 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            LoginForm f = new LoginForm();
+            f.Show();
         }
 
         private void AdminBtn_Click(object sender, EventArgs e)
         {
             AdminForm F2 = new AdminForm();
             F2.Show();
+            this.Hide();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
