@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-
+        string Loan_Amount, AccoutId;
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,186 +28,254 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.btn_Reject = new System.Windows.Forms.Button();
+            this.lOANBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bankSystemDataSet1 = new WindowsFormsApp1.BankSystemDataSet1();
+            this.projectDataSet = new WindowsFormsApp1.ProjectDataSet();
+            this.empBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.empTableAdapter = new WindowsFormsApp1.ProjectDataSetTableAdapters.empTableAdapter();
+            this.bankSystemDataSet = new WindowsFormsApp1.BankSystemDataSet();
+            this.bankSystemDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lOANTableAdapter = new WindowsFormsApp1.BankSystemDataSet1TableAdapters.LOANTableAdapter();
+            this.txt_loan_num = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
+            this.bankSystemDataSet2 = new WindowsFormsApp1.BankSystemDataSet();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lOANNUMBERDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMPSSNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aCCOUNTIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cUSTOMERIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lOANTYPEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lOANAMOUNTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iNTERESTRATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_accept_payloan = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.lOANBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // btn_Reject
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(174, 45);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 38);
-            this.textBox1.TabIndex = 1;
+            this.btn_Reject.Location = new System.Drawing.Point(779, 341);
+            this.btn_Reject.Name = "btn_Reject";
+            this.btn_Reject.Size = new System.Drawing.Size(173, 40);
+            this.btn_Reject.TabIndex = 11;
+            this.btn_Reject.Text = "Reject";
+            this.btn_Reject.UseVisualStyleBackColor = true;
+            this.btn_Reject.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox2
+            // lOANBindingSource
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
-            this.textBox2.Location = new System.Drawing.Point(174, 98);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 38);
-            this.textBox2.TabIndex = 2;
+            this.lOANBindingSource.DataMember = "LOAN";
+            this.lOANBindingSource.DataSource = this.bankSystemDataSet1;
             // 
-            // textBox3
+            // bankSystemDataSet1
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
-            this.textBox3.Location = new System.Drawing.Point(174, 157);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 38);
-            this.textBox3.TabIndex = 3;
+            this.bankSystemDataSet1.DataSetName = "BankSystemDataSet1";
+            this.bankSystemDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // projectDataSet
+            // 
+            this.projectDataSet.DataSetName = "ProjectDataSet";
+            this.projectDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // empBindingSource
+            // 
+            this.empBindingSource.DataMember = "emp";
+            this.empBindingSource.DataSource = this.projectDataSet;
+            // 
+            // empTableAdapter
+            // 
+            this.empTableAdapter.ClearBeforeFill = true;
+            // 
+            // bankSystemDataSet
+            // 
+            this.bankSystemDataSet.DataSetName = "BankSystemDataSet";
+            this.bankSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bankSystemDataSetBindingSource
+            // 
+            this.bankSystemDataSetBindingSource.DataSource = this.bankSystemDataSet;
+            this.bankSystemDataSetBindingSource.Position = 0;
+            // 
+            // lOANTableAdapter
+            // 
+            this.lOANTableAdapter.ClearBeforeFill = true;
+            // 
+            // txt_loan_num
+            // 
+            this.txt_loan_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_loan_num.Location = new System.Drawing.Point(190, 89);
+            this.txt_loan_num.Name = "txt_loan_num";
+            this.txt_loan_num.Size = new System.Drawing.Size(117, 38);
+            this.txt_loan_num.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 51);
+            this.label1.Location = new System.Drawing.Point(63, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Loan_number:";
             // 
-            // label2
+            // bankSystemDataSet2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 16);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
+            this.bankSystemDataSet2.DataSetName = "BankSystemDataSet";
+            this.bankSystemDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label3
+            // dataGridView1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 163);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 16);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "label3";
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lOANNUMBERDataGridViewTextBoxColumn,
+            this.eMPSSNDataGridViewTextBoxColumn,
+            this.aCCOUNTIDDataGridViewTextBoxColumn,
+            this.cUSTOMERIDDataGridViewTextBoxColumn,
+            this.lOANTYPEDataGridViewTextBoxColumn,
+            this.lOANAMOUNTDataGridViewTextBoxColumn,
+            this.iNTERESTRATEDataGridViewTextBoxColumn,
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.lOANBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(337, 76);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(829, 150);
+            this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // button1
+            // lOANNUMBERDataGridViewTextBoxColumn
             // 
-            this.button1.Location = new System.Drawing.Point(475, 224);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 40);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lOANNUMBERDataGridViewTextBoxColumn.DataPropertyName = "LOAN_NUMBER";
+            this.lOANNUMBERDataGridViewTextBoxColumn.HeaderText = "LOAN_NUMBER";
+            this.lOANNUMBERDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lOANNUMBERDataGridViewTextBoxColumn.Name = "lOANNUMBERDataGridViewTextBoxColumn";
+            this.lOANNUMBERDataGridViewTextBoxColumn.Width = 125;
             // 
-            // button2
+            // eMPSSNDataGridViewTextBoxColumn
             // 
-            this.button2.Location = new System.Drawing.Point(55, 411);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 40);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Accept";
-            this.button2.UseVisualStyleBackColor = true;
+            this.eMPSSNDataGridViewTextBoxColumn.DataPropertyName = "EMP_SSN";
+            this.eMPSSNDataGridViewTextBoxColumn.HeaderText = "EMP_SSN";
+            this.eMPSSNDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.eMPSSNDataGridViewTextBoxColumn.Name = "eMPSSNDataGridViewTextBoxColumn";
+            this.eMPSSNDataGridViewTextBoxColumn.Width = 125;
             // 
-            // button3
+            // aCCOUNTIDDataGridViewTextBoxColumn
             // 
-            this.button3.Location = new System.Drawing.Point(270, 411);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(117, 40);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Reject";
-            this.button3.UseVisualStyleBackColor = true;
+            this.aCCOUNTIDDataGridViewTextBoxColumn.DataPropertyName = "ACCOUNTID";
+            this.aCCOUNTIDDataGridViewTextBoxColumn.HeaderText = "ACCOUNTID";
+            this.aCCOUNTIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aCCOUNTIDDataGridViewTextBoxColumn.Name = "aCCOUNTIDDataGridViewTextBoxColumn";
+            this.aCCOUNTIDDataGridViewTextBoxColumn.Width = 125;
             // 
-            // button4
+            // cUSTOMERIDDataGridViewTextBoxColumn
             // 
-            this.button4.Location = new System.Drawing.Point(475, 411);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(117, 40);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "PayLoan";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cUSTOMERIDDataGridViewTextBoxColumn.DataPropertyName = "CUSTOMERID";
+            this.cUSTOMERIDDataGridViewTextBoxColumn.HeaderText = "CUSTOMERID";
+            this.cUSTOMERIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.cUSTOMERIDDataGridViewTextBoxColumn.Name = "cUSTOMERIDDataGridViewTextBoxColumn";
+            this.cUSTOMERIDDataGridViewTextBoxColumn.Width = 125;
             // 
-            // listView1
+            // lOANTYPEDataGridViewTextBoxColumn
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(759, 45);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(352, 219);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lOANTYPEDataGridViewTextBoxColumn.DataPropertyName = "LOAN_TYPE";
+            this.lOANTYPEDataGridViewTextBoxColumn.HeaderText = "LOAN_TYPE";
+            this.lOANTYPEDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lOANTYPEDataGridViewTextBoxColumn.Name = "lOANTYPEDataGridViewTextBoxColumn";
+            this.lOANTYPEDataGridViewTextBoxColumn.Width = 125;
             // 
-            // listView2
+            // lOANAMOUNTDataGridViewTextBoxColumn
             // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(759, 295);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(352, 219);
-            this.listView2.TabIndex = 13;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.lOANAMOUNTDataGridViewTextBoxColumn.DataPropertyName = "LOAN_AMOUNT";
+            this.lOANAMOUNTDataGridViewTextBoxColumn.HeaderText = "LOAN_AMOUNT";
+            this.lOANAMOUNTDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lOANAMOUNTDataGridViewTextBoxColumn.Name = "lOANAMOUNTDataGridViewTextBoxColumn";
+            this.lOANAMOUNTDataGridViewTextBoxColumn.Width = 125;
             // 
-            // vScrollBar1
+            // iNTERESTRATEDataGridViewTextBoxColumn
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(1090, 45);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 219);
-            this.vScrollBar1.TabIndex = 14;
+            this.iNTERESTRATEDataGridViewTextBoxColumn.DataPropertyName = "INTERESTRATE";
+            this.iNTERESTRATEDataGridViewTextBoxColumn.HeaderText = "INTERESTRATE";
+            this.iNTERESTRATEDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iNTERESTRATEDataGridViewTextBoxColumn.Name = "iNTERESTRATEDataGridViewTextBoxColumn";
+            this.iNTERESTRATEDataGridViewTextBoxColumn.Width = 125;
             // 
-            // vScrollBar2
+            // oRIGINATIONDATEDataGridViewTextBoxColumn
             // 
-            this.vScrollBar2.Location = new System.Drawing.Point(1090, 295);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(21, 219);
-            this.vScrollBar2.TabIndex = 15;
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn.DataPropertyName = "ORIGINATIONDATE";
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn.HeaderText = "ORIGINATIONDATE";
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn.Name = "oRIGINATIONDATEDataGridViewTextBoxColumn";
+            this.oRIGINATIONDATEDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // btn_accept_payloan
+            // 
+            this.btn_accept_payloan.Location = new System.Drawing.Point(312, 341);
+            this.btn_accept_payloan.Name = "btn_accept_payloan";
+            this.btn_accept_payloan.Size = new System.Drawing.Size(173, 40);
+            this.btn_accept_payloan.TabIndex = 17;
+            this.btn_accept_payloan.Text = "Accept and Payloan";
+            this.btn_accept_payloan.UseVisualStyleBackColor = true;
+            this.btn_accept_payloan.Click += new System.EventHandler(this.btn_accept_payloan_Click);
             // 
             // Loan_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 595);
-            this.Controls.Add(this.vScrollBar2);
-            this.Controls.Add(this.vScrollBar1);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(1208, 595);
+            this.Controls.Add(this.btn_accept_payloan);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_loan_num);
+            this.Controls.Add(this.btn_Reject);
             this.Name = "Loan_Form";
             this.Text = "Loan_Form";
             this.Load += new System.EventHandler(this.Loan_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.lOANBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btn_Reject;
+        private ProjectDataSet projectDataSet;
+        private System.Windows.Forms.BindingSource empBindingSource;
+        private ProjectDataSetTableAdapters.empTableAdapter empTableAdapter;
+        private System.Windows.Forms.BindingSource bankSystemDataSetBindingSource;
+        private BankSystemDataSet bankSystemDataSet;
+        private BankSystemDataSet1 bankSystemDataSet1;
+        private System.Windows.Forms.BindingSource lOANBindingSource;
+        private BankSystemDataSet1TableAdapters.LOANTableAdapter lOANTableAdapter;
+        private System.Windows.Forms.TextBox txt_loan_num;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
+        private BankSystemDataSet bankSystemDataSet2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lOANNUMBERDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eMPSSNDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aCCOUNTIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cUSTOMERIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lOANTYPEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lOANAMOUNTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iNTERESTRATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn oRIGINATIONDATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btn_accept_payloan;
     }
 }
