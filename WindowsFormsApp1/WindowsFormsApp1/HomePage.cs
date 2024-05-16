@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class HomePage : Form
     {
-        public Form1()
+        public HomePage()
         {
             InitializeComponent();
         }
@@ -24,7 +24,16 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 F2 = new Form2();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AdminBtn_Click(object sender, EventArgs e)
+        {
+            AdminForm F2 = new AdminForm();
             F2.Show();
             this.Hide();
         }

@@ -16,7 +16,8 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Loan_Form());
+            Application.Run(new HomePage());
+            Application.Run(new AdminForm());
         }
     }
 }
