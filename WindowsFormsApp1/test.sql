@@ -1,8 +1,8 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     5/5/2024 7:07:47 PM                          */
+/* Created on:     5/15/2024 7:42:08 PM                         */
 /*==============================================================*/
-
+use BankSystem;
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -48,16 +48,23 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('BRANCH_LOANS') and o.name = 'FK_BRANCH_L_REFERENCE_LOANS')
+   where r.fkeyid = object_id('BRANCH_LOANS') and o.name = 'FK_BRANCH_L_REFERENCE_LOAN')
 alter table BRANCH_LOANS
-   drop constraint FK_BRANCH_L_REFERENCE_LOANS
+   drop constraint FK_BRANCH_L_REFERENCE_LOAN
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('DEPENDANT_ACCOUNT') and o.name = 'FK_DEPENDAN_REFERENCE_CUSTOMER')
-alter table DEPENDANT_ACCOUNT
-   drop constraint FK_DEPENDAN_REFERENCE_CUSTOMER
+   where r.fkeyid = object_id('CREDIT_CARD') and o.name = 'FK_CREDIT_C_REFERENCE_CREDIT_C')
+alter table CREDIT_CARD
+   drop constraint FK_CREDIT_C_REFERENCE_CREDIT_C
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('CREDIT_CARD_ACCOUNT') and o.name = 'FK_CREDIT_C_REFERENCE_ACCOUNT')
+alter table CREDIT_CARD_ACCOUNT
+   drop constraint FK_CREDIT_C_REFERENCE_ACCOUNT
 go
 
 if exists (select 1
@@ -69,23 +76,37 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('LOANS') and o.name = 'FK_LOANS_REFERENCE_EMPLOYEE')
-alter table LOANS
-   drop constraint FK_LOANS_REFERENCE_EMPLOYEE
+   where r.fkeyid = object_id('LOAN') and o.name = 'FK_LOAN_REFERENCE_LOANACCO')
+alter table LOAN
+   drop constraint FK_LOAN_REFERENCE_LOANACCO
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('LOANS') and o.name = 'FK_LOANS_REFERENCE_CUSTOMER')
-alter table LOANS
-   drop constraint FK_LOANS_REFERENCE_CUSTOMER
+   where r.fkeyid = object_id('LOAN') and o.name = 'FK_LOAN_REFERENCE_CUSTOMER')
+alter table LOAN
+   drop constraint FK_LOAN_REFERENCE_CUSTOMER
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('TRANSCATION') and o.name = 'FK_TRANSCAT_REFERENCE_CUSTOMER')
+   where r.fkeyid = object_id('LOAN') and o.name = 'FK_LOAN_REFERENCE_EMPLOYEE')
+alter table LOAN
+   drop constraint FK_LOAN_REFERENCE_EMPLOYEE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('LOANACCOUNT') and o.name = 'FK_LOANACCO_REFERENCE_ACCOUNT')
+alter table LOANACCOUNT
+   drop constraint FK_LOANACCO_REFERENCE_ACCOUNT
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('TRANSCATION') and o.name = 'FK_TRANSCAT_REFERENCE_ACCOUNT')
 alter table TRANSCATION
-   drop constraint FK_TRANSCAT_REFERENCE_CUSTOMER
+   drop constraint FK_TRANSCAT_REFERENCE_ACCOUNT
 go
 
 if exists (select 1
@@ -132,16 +153,23 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('CUSTOMER')
+           where  id = object_id('CREDIT_CARD')
             and   type = 'U')
-   drop table CUSTOMER
+   drop table CREDIT_CARD
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('DEPENDANT_ACCOUNT')
+           where  id = object_id('CREDIT_CARD_ACCOUNT')
             and   type = 'U')
-   drop table DEPENDANT_ACCOUNT
+   drop table CREDIT_CARD_ACCOUNT
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CUSTOMER')
+            and   type = 'U')
+   drop table CUSTOMER
 go
 
 if exists (select 1
@@ -153,9 +181,16 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('LOANS')
+           where  id = object_id('LOAN')
             and   type = 'U')
-   drop table LOANS
+   drop table LOAN
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('LOANACCOUNT')
+            and   type = 'U')
+   drop table LOANACCOUNT
 go
 
 if exists (select 1
@@ -165,15 +200,18 @@ if exists (select 1
    drop table TRANSCATION
 go
 
+
 /*==============================================================*/
 /* Table: ACCOUNT                                               */
 /*==============================================================*/
 create table ACCOUNT (
-   ACCOUNT_NUMBER       numeric(24)          not null,
-   CUST_SSN             numeric(15)          null,
-   ACCOUNT_BALANCE      numeric(15)          not null,
-   ACCOUNT_TYPE         varchar(10)          not null,
-   constraint PK_ACCOUNT primary key (ACCOUNT_NUMBER)
+   ACCOUNTID            numeric(15)          not null identity(1,1),
+   CUSTOMERID           numeric(15)          null,
+   BALANCE              numeric(15)          not null,
+   TYPE                 varchar(10)          not null,
+   INTERESTRATE         float                null,
+   OPENDATE             datetime             null,
+   constraint PK_ACCOUNT primary key (ACCOUNTID)
 )
 go
 
@@ -181,7 +219,7 @@ go
 /* Table: BANK                                                  */
 /*==============================================================*/
 create table BANK (
-   CODE                 numeric(15)          not null,
+   CODE                 numeric(15)          not null identity(1,1),
    BANK_NAME            varchar(60)          not null,
    constraint PK_BANK primary key (CODE)
 )
@@ -201,10 +239,13 @@ go
 /* Table: BRANCH                                                */
 /*==============================================================*/
 create table BRANCH (
-   BARNCH_NUMBER        numeric(14)          not null,
+   BRANCH_NUMBER        numeric(14)          not null identity(1,1),
    BANK_CODE            numeric(15)          null,
    BARNCH_ADDRESS       varchar(255)         not null,
-   constraint PK_BRANCH primary key (BARNCH_NUMBER)
+   CITY                 varchar(25)          null,
+   STATE                varchar(25)          null,
+   ZIPCODE              numeric(10)          null,
+   constraint PK_BRANCH primary key (BRANCH_NUMBER)
 )
 go
 
@@ -212,9 +253,9 @@ go
 /* Table: BRANCH_CUSTOMER                                       */
 /*==============================================================*/
 create table BRANCH_CUSTOMER (
-   BARNCH_NUMBER        numeric(14)          not null,
+   BRANCH_NUMBER        numeric(14)          not null,
    CUST_SSN             numeric(15)          not null,
-   constraint PK_BRANCH_CUSTOMER primary key (BARNCH_NUMBER, CUST_SSN)
+   constraint PK_BRANCH_CUSTOMER primary key (BRANCH_NUMBER, CUST_SSN)
 )
 go
 
@@ -222,9 +263,32 @@ go
 /* Table: BRANCH_LOANS                                          */
 /*==============================================================*/
 create table BRANCH_LOANS (
-   BARNCH_NUMBER        numeric(14)          not null,
+   BRANCH_NUMBER        numeric(14)          not null,
    LOAN_NUMBER          numeric(10)          not null,
-   constraint PK_BRANCH_LOANS primary key (BARNCH_NUMBER, LOAN_NUMBER)
+   constraint PK_BRANCH_LOANS primary key (BRANCH_NUMBER, LOAN_NUMBER)
+)
+go
+
+/*==============================================================*/
+/* Table: CREDIT_CARD                                           */
+/*==============================================================*/
+create table CREDIT_CARD (
+   CREDICARDID          numeric(10)          not null,
+   ACCOUNTID            numeric(15)          null,
+   CREDITLIMIT          int                  null,
+   MINPAYMENT           int                  null,
+   INTERESTRATE         float                null,
+   ISSUEDDATE           datetime             null,
+   constraint PK_CREDIT_CARD primary key (CREDICARDID)
+)
+go
+
+/*==============================================================*/
+/* Table: CREDIT_CARD_ACCOUNT                                   */
+/*==============================================================*/
+create table CREDIT_CARD_ACCOUNT (
+   ACCOUNTID            numeric(15)          not null,
+   constraint PK_CREDIT_CARD_ACCOUNT primary key (ACCOUNTID)
 )
 go
 
@@ -232,24 +296,15 @@ go
 /* Table: CUSTOMER                                              */
 /*==============================================================*/
 create table CUSTOMER (
-   CUST_SSN             numeric(15)          not null,
-   CUSTOMER_FNAME       varchar(10)          not null,
-   CUSTOMER_LNAME       varchar(10)          not null,
+   CUSTOMERID           numeric(15)          not null identity(1,1),
+   FNAME                varchar(10)          not null,
+   LNAME                varchar(10)          not null,
    CUSTOMER_ADDRESS     varchar(255)         not null,
    CUST_PHONE           numeric(12)          not null,
-   constraint PK_CUSTOMER primary key (CUST_SSN)
-)
-go
-
-/*==============================================================*/
-/* Table: DEPENDANT_ACCOUNT                                     */
-/*==============================================================*/
-create table DEPENDANT_ACCOUNT (
-   DEPENDANT_FNAME      varchar(10)          not null,
-   CUST_SSN             numeric(15)          not null,
-   DEPENDANT_LNAME      varchar(10)          not null,
-   DEPENDANT_BALANCE    numeric(15)          not null,
-   constraint PK_DEPENDANT_ACCOUNT primary key (DEPENDANT_FNAME, CUST_SSN)
+   EMAIL                varchar(30)          null,
+   DATEOFBIRTH          datetime             null,
+   NATIONALID           numeric(15)          null,
+   constraint PK_CUSTOMER primary key (CUSTOMERID)
 )
 go
 
@@ -257,24 +312,40 @@ go
 /* Table: EMPLOYEE                                              */
 /*==============================================================*/
 create table EMPLOYEE (
-   EMP_SSN              numeric(15)          not null,
+   EMPLOYEEID           numeric(10)          not null identity(1,1),
    BARNCH_NUMBER        numeric(14)          null,
    EMP_FNAME            varchar(10)          not null,
    EMP_LNAME            varchar(10)          not null,
-   constraint PK_EMPLOYEE primary key (EMP_SSN)
+   EMP_ADDRESS          varchar(255)         null,
+   PHONENUMBER          numeric(11)          null,
+   JOBTITLE             varchar(25)          null,
+   EMP_EMAIL            varchar(255)         null,
+   constraint PK_EMPLOYEE primary key (EMPLOYEEID)
 )
 go
 
 /*==============================================================*/
-/* Table: LOANS                                                 */
+/* Table: LOAN                                                  */
 /*==============================================================*/
-create table LOANS (
-   LOAN_NUMBER          numeric(10)          not null,
-   EMP_SSN              numeric(15)          null,
-   CUST_SSN             numeric(15)          null,
+create table LOAN (
+   LOAN_NUMBER          numeric(10)          not null identity(1,1),
+   EMP_SSN              numeric(10)          null,
+   ACCOUNTID            numeric(15)          null,
+   CUSTOMERID           numeric(15)          null,
    LOAN_TYPE            varchar(30)          not null,
    LOAN_AMOUNT          numeric(10)          not null,
-   constraint PK_LOANS primary key (LOAN_NUMBER)
+   INTERESTRATE         float                null,
+   ORIGINATIONDATE      datetime             null,
+   constraint PK_LOAN primary key (LOAN_NUMBER)
+)
+go
+
+/*==============================================================*/
+/* Table: LOANACCOUNT                                           */
+/*==============================================================*/
+create table LOANACCOUNT (
+   ACCOUNTID            numeric(15)          not null,
+   constraint PK_LOANACCOUNT primary key (ACCOUNTID)
 )
 go
 
@@ -282,17 +353,19 @@ go
 /* Table: TRANSCATION                                           */
 /*==============================================================*/
 create table TRANSCATION (
-   CUST_SSN             numeric(15)          not null,
-   TRANSACTION_DATE     timestamp            not null,
+   TRANSACTIONID        numeric(10)          not null,
+   ACCOUNTID            numeric(15)          not null,
+   TRANSACTION_DATE     timestamp            null,
    TRANSACTION_AMOUNT   numeric(15)          not null,
    TRANSACTION_TYPE     varchar(10)          not null,
-   constraint PK_TRANSCATION primary key (CUST_SSN, TRANSACTION_DATE)
+   DESCRIPTION          varchar(255)         null,
+   constraint PK_TRANSCATION primary key (TRANSACTIONID, ACCOUNTID)
 )
 go
 
 alter table ACCOUNT
-   add constraint FK_ACCOUNT_REFERENCE_CUSTOMER foreign key (CUST_SSN)
-      references CUSTOMER (CUST_SSN)
+   add constraint FK_ACCOUNT_REFERENCE_CUSTOMER foreign key (CUSTOMERID)
+      references CUSTOMER (CUSTOMERID)
 go
 
 alter table BANK_ADDRESSES
@@ -307,46 +380,61 @@ go
 
 alter table BRANCH_CUSTOMER
    add constraint FK_BRANCH_C_REFERENCE_CUSTOMER foreign key (CUST_SSN)
-      references CUSTOMER (CUST_SSN)
+      references CUSTOMER (CUSTOMERID)
 go
 
 alter table BRANCH_CUSTOMER
-   add constraint FK_BRANCH_C_REFERENCE_BRANCH foreign key (BARNCH_NUMBER)
-      references BRANCH (BARNCH_NUMBER)
+   add constraint FK_BRANCH_C_REFERENCE_BRANCH foreign key (BRANCH_NUMBER)
+      references BRANCH (BRANCH_NUMBER)
 go
 
 alter table BRANCH_LOANS
-   add constraint FK_BRANCH_L_REFERENCE_BRANCH foreign key (BARNCH_NUMBER)
-      references BRANCH (BARNCH_NUMBER)
+   add constraint FK_BRANCH_L_REFERENCE_BRANCH foreign key (BRANCH_NUMBER)
+      references BRANCH (BRANCH_NUMBER)
 go
 
 alter table BRANCH_LOANS
-   add constraint FK_BRANCH_L_REFERENCE_LOANS foreign key (LOAN_NUMBER)
-      references LOANS (LOAN_NUMBER)
+   add constraint FK_BRANCH_L_REFERENCE_LOAN foreign key (LOAN_NUMBER)
+      references LOAN (LOAN_NUMBER)
 go
 
-alter table DEPENDANT_ACCOUNT
-   add constraint FK_DEPENDAN_REFERENCE_CUSTOMER foreign key (CUST_SSN)
-      references CUSTOMER (CUST_SSN)
+alter table CREDIT_CARD
+   add constraint FK_CREDIT_C_REFERENCE_CREDIT_C foreign key (ACCOUNTID)
+      references CREDIT_CARD_ACCOUNT (ACCOUNTID)
+go
+
+alter table CREDIT_CARD_ACCOUNT
+   add constraint FK_CREDIT_C_REFERENCE_ACCOUNT foreign key (ACCOUNTID)
+      references ACCOUNT (ACCOUNTID)
 go
 
 alter table EMPLOYEE
    add constraint FK_EMPLOYEE_REFERENCE_BRANCH foreign key (BARNCH_NUMBER)
-      references BRANCH (BARNCH_NUMBER)
+      references BRANCH (BRANCH_NUMBER)
 go
 
-alter table LOANS
-   add constraint FK_LOANS_REFERENCE_EMPLOYEE foreign key (EMP_SSN)
-      references EMPLOYEE (EMP_SSN)
+alter table LOAN
+   add constraint FK_LOAN_REFERENCE_LOANACCO foreign key (ACCOUNTID)
+      references LOANACCOUNT (ACCOUNTID)
 go
 
-alter table LOANS
-   add constraint FK_LOANS_REFERENCE_CUSTOMER foreign key (CUST_SSN)
-      references CUSTOMER (CUST_SSN)
+alter table LOAN
+   add constraint FK_LOAN_REFERENCE_CUSTOMER foreign key (CUSTOMERID)
+      references CUSTOMER (CUSTOMERID)
+go
+
+alter table LOAN
+   add constraint FK_LOAN_REFERENCE_EMPLOYEE foreign key (EMP_SSN)
+      references EMPLOYEE (EMPLOYEEID)
+go
+
+alter table LOANACCOUNT
+   add constraint FK_LOANACCO_REFERENCE_ACCOUNT foreign key (ACCOUNTID)
+      references ACCOUNT (ACCOUNTID)
 go
 
 alter table TRANSCATION
-   add constraint FK_TRANSCAT_REFERENCE_CUSTOMER foreign key (CUST_SSN)
-      references CUSTOMER (CUST_SSN)
+   add constraint FK_TRANSCAT_REFERENCE_ACCOUNT foreign key (ACCOUNTID)
+      references ACCOUNT (ACCOUNTID)
 go
 
