@@ -39,18 +39,20 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(285, 34);
+            this.label1.Location = new System.Drawing.Point(214, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 39);
+            this.label1.Size = new System.Drawing.Size(90, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Admin";
             // 
             // btnBank
             // 
             this.btnBank.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBank.Location = new System.Drawing.Point(240, 134);
+            this.btnBank.Location = new System.Drawing.Point(180, 109);
+            this.btnBank.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBank.Name = "btnBank";
-            this.btnBank.Size = new System.Drawing.Size(204, 64);
+            this.btnBank.Size = new System.Drawing.Size(153, 52);
             this.btnBank.TabIndex = 1;
             this.btnBank.Text = "Bank";
             this.btnBank.UseVisualStyleBackColor = true;
@@ -59,32 +61,36 @@
             // btnBranch
             // 
             this.btnBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBranch.Location = new System.Drawing.Point(240, 263);
+            this.btnBranch.Location = new System.Drawing.Point(180, 214);
+            this.btnBranch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBranch.Name = "btnBranch";
-            this.btnBranch.Size = new System.Drawing.Size(204, 59);
+            this.btnBranch.Size = new System.Drawing.Size(153, 48);
             this.btnBranch.TabIndex = 2;
             this.btnBranch.Text = "Branch";
             this.btnBranch.UseVisualStyleBackColor = true;
+            this.btnBranch.Click += new System.EventHandler(this.btnBranch_Click);
             // 
             // btnManageEmployees
             // 
             this.btnManageEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageEmployees.Location = new System.Drawing.Point(240, 389);
+            this.btnManageEmployees.Location = new System.Drawing.Point(180, 316);
+            this.btnManageEmployees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnManageEmployees.Name = "btnManageEmployees";
-            this.btnManageEmployees.Size = new System.Drawing.Size(204, 67);
+            this.btnManageEmployees.Size = new System.Drawing.Size(153, 54);
             this.btnManageEmployees.TabIndex = 3;
             this.btnManageEmployees.Text = "Manage Employees";
             this.btnManageEmployees.UseVisualStyleBackColor = true;
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 559);
+            this.ClientSize = new System.Drawing.Size(513, 446);
             this.Controls.Add(this.btnManageEmployees);
             this.Controls.Add(this.btnBranch);
             this.Controls.Add(this.btnBank);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AdminForm";
             this.Text = "Form2";
             this.ResumeLayout(false);
