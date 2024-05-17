@@ -15,25 +15,26 @@ namespace WindowsFormsApp1
         public Customer()
         {
             InitializeComponent();
-            btn_Account.Click += btn_Account_Click;
             btn_Request.Click += btn_Request_Click;
+            btn_Account.Click += btn_Account_Click;
+        }
+
+        private void btn_Request_Click(object sender, EventArgs e)
+        {
+            Request_Loan request_Loan = new Request_Loan();
+            request_Loan.Show();
+        }
+
+        private void btn_Account_Click(object sender, EventArgs e)
+        {
+            Account_Info account_info = new Account_Info();
+            account_info.Show();
+            
         }
 
         private void Customer_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void btn_Request_Click(object sender, EventArgs e)
-        {
-            Request_Loan request = new Request_Loan();
-            request.Show();
-        }
-
-        private void btn_Account_Click(object sender, EventArgs e)
-        {
-            Account_Info account = new Account_Info();
-            account.Show();
         }
     }
 }

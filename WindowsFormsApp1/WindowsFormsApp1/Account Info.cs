@@ -20,7 +20,12 @@ namespace WindowsFormsApp1
         private void Account_Info_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bankSystemDataSet.ACCOUNT' table. You can move, or remove it, as needed.
-            this.aCCOUNTTableAdapter.Fill(this.bankSystemDataSet.ACCOUNT);
+            /*this.aCCOUNTTableAdapter.Fill(this.bankSystemDataSet.ACCOUNT);*/
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

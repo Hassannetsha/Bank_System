@@ -29,39 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bankSystemDataSet = new WindowsFormsApp1.BankSystemDataSet();
             this.aCCOUNTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.aCCOUNTTableAdapter = new WindowsFormsApp1.BankSystemDataSetTableAdapters.ACCOUNTTableAdapter();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.aCCOUNTBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.aCCOUNTIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cUSTOMERIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bALANCEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tYPEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iNTERESTRATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.oPENDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.aCCOUNTIDDataGridViewTextBoxColumn,
-            this.cUSTOMERIDDataGridViewTextBoxColumn,
-            this.bALANCEDataGridViewTextBoxColumn,
-            this.tYPEDataGridViewTextBoxColumn,
-            this.iNTERESTRATEDataGridViewTextBoxColumn,
-            this.oPENDATEDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.aCCOUNTBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 7);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(831, 379);
-            this.dataGridView1.TabIndex = 0;
             // 
             // bankSystemDataSet
             // 
@@ -76,6 +59,31 @@
             // aCCOUNTTableAdapter
             // 
             this.aCCOUNTTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.aCCOUNTIDDataGridViewTextBoxColumn,
+            this.cUSTOMERIDDataGridViewTextBoxColumn,
+            this.bALANCEDataGridViewTextBoxColumn,
+            this.tYPEDataGridViewTextBoxColumn,
+            this.iNTERESTRATEDataGridViewTextBoxColumn,
+            this.oPENDATEDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.aCCOUNTBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(29, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(795, 367);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // aCCOUNTBindingSource1
+            // 
+            this.aCCOUNTBindingSource1.DataMember = "ACCOUNT";
+            this.aCCOUNTBindingSource1.DataSource = this.bankSystemDataSet;
             // 
             // aCCOUNTIDDataGridViewTextBoxColumn
             // 
@@ -130,29 +138,30 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 400);
+            this.ClientSize = new System.Drawing.Size(847, 414);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Account_Info";
             this.Text = "Account_Info";
             this.Load += new System.EventHandler(this.Account_Info_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private BankSystemDataSet bankSystemDataSet;
         private System.Windows.Forms.BindingSource aCCOUNTBindingSource;
         private BankSystemDataSetTableAdapters.ACCOUNTTableAdapter aCCOUNTTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn aCCOUNTIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUSTOMERIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bALANCEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tYPEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iNTERESTRATEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn oPENDATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource aCCOUNTBindingSource1;
     }
 }
