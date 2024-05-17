@@ -5,26 +5,23 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Loan_Form : Form
+    public partial class loan_form : Form
     {
-        public Loan_Form()
+        public loan_form()
         {
             InitializeComponent();
         }
 
-        private void Loan_Form_Load(object sender, EventArgs e)
+        private void loan_form_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bankSystemDataSet1.LOAN' table. You can move, or remove it, as needed.
-            this.lOANTableAdapter.Fill(this.bankSystemDataSet1.LOAN);
-            // TODO: This line of code loads data into the 'projectDataSet.emp' table. You can move, or remove it, as needed.
-            //this.empTableAdapter.Fill(this.projectDataSet.emp);
+            // TODO: This line of code loads data into the 'bankSystemDataSet.LOAN' table. You can move, or remove it, as needed.
+            this.lOANTableAdapter.Fill(this.bankSystemDataSet.LOAN);
 
         }
 
@@ -33,29 +30,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
-            SqlCommand cmd = new SqlCommand("delete from LOAN where LOAN_NUMBER = '" + txt_loan_num.Text + "';", con);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show("done!");
-            this.lOANTableAdapter.Fill(this.bankSystemDataSet1.LOAN);
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btn_accept_payloan_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
@@ -88,13 +63,25 @@ namespace WindowsFormsApp1
                             cmd.ExecuteNonQuery();
                             con.Close();
                             MessageBox.Show("done!");
-                            this.lOANTableAdapter.Fill(this.bankSystemDataSet1.LOAN);
+                            this.lOANTableAdapter.Fill(this.bankSystemDataSet.LOAN);
                             break;
                         }
                     }
                 }
                 if (write) { break; }
             }
+        }
+
+        private void btn_reject_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+            SqlCommand cmd = new SqlCommand("delete from LOAN where LOAN_NUMBER = '" + txt_loan_num.Text + "';", con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("done!");
+            this.lOANTableAdapter.Fill(this.bankSystemDataSet.LOAN);
         }
     }
 }

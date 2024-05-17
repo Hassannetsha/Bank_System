@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="BankSystemDataSet" targetNamespace="http://tempuri.org/BankSystemDataSet.xsd" xmlns:mstns="http://tempuri.org/BankSystemDataSet.xsd" xmlns="http://tempuri.org/BankSystemDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="BankSystemDataSet1" targetNamespace="http://tempuri.org/BankSystemDataSet11.xsd" xmlns:mstns="http://tempuri.org/BankSystemDataSet11.xsd" xmlns="http://tempuri.org/BankSystemDataSet11.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -834,7 +834,7 @@ SELECT TRANSACTIONID, ACCOUNTID, TRANSACTION_DATE, TRANSACTION_AMOUNT, TRANSACTI
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="BankSystemDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="BankSystemDataSet" msprop:Generator_DataSetName="BankSystemDataSet">
+  <xs:element name="BankSystemDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="BankSystemDataSet1" msprop:Generator_DataSetName="BankSystemDataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="ACCOUNT" msprop:Generator_RowEvHandlerName="ACCOUNTRowChangeEventHandler" msprop:Generator_RowDeletedName="ACCOUNTRowDeleted" msprop:Generator_RowDeletingName="ACCOUNTRowDeleting" msprop:Generator_RowEvArgName="ACCOUNTRowChangeEvent" msprop:Generator_TablePropName="ACCOUNT" msprop:Generator_RowChangedName="ACCOUNTRowChanged" msprop:Generator_RowChangingName="ACCOUNTRowChanging" msprop:Generator_TableClassName="ACCOUNTDataTable" msprop:Generator_RowClassName="ACCOUNTRow" msprop:Generator_TableVarName="tableACCOUNT" msprop:Generator_UserTableName="ACCOUNT">

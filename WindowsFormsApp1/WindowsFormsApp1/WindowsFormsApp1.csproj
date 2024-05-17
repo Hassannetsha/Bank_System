@@ -52,11 +52,10 @@
     <Compile Include="BankForm.Designer.cs">
       <DependentUpon>BankForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BranchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BranchForm.Designer.cs">
-      <DependentUpon>BranchForm.cs</DependentUpon>
+    <Compile Include="BankSystemDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BankSystemDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
@@ -70,11 +69,11 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loan_Form.cs">
+    <Compile Include="loan_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Loan_Form.Designer.cs">
-      <DependentUpon>Loan_Form.cs</DependentUpon>
+    <Compile Include="loan_form.Designer.cs">
+      <DependentUpon>loan_form.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -98,8 +97,8 @@
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Loan_Form.resx">
-      <DependentUpon>Loan_Form.cs</DependentUpon>
+    <EmbeddedResource Include="loan_form.resx">
+      <DependentUpon>loan_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -123,17 +122,6 @@
     </None>
     <None Include="BankSystemDataSet.xss">
       <DependentUpon>BankSystemDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BankSystemDataSet1.xsc">
-      <DependentUpon>BankSystemDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="BankSystemDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BankSystemDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BankSystemDataSet1.xss">
-      <DependentUpon>BankSystemDataSet1.xsd</DependentUpon>
     </None>
     <None Include="ProjectDataSet.xsc">
       <DependentUpon>ProjectDataSet.xsd</DependentUpon>
