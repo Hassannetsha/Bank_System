@@ -20,15 +20,16 @@ namespace WindowsFormsApp1
             LoadBankData();
         }
 
-        
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnection = new SqlConnection(connectionString);
-            string s = "INSERT INTO BANK VALUES ('"+BankName.Text+ "')";
+            string s = "INSERT INTO BANK VALUES ('" + BankName.Text + "')";
+            /*string s2 = "INSERT INTO BANK_ADDRESSES VALUES ('" + BankAddress.Text + "','""')";*/
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
-            
-            
+
+
             try
             {
                 //comment
@@ -36,6 +37,14 @@ namespace WindowsFormsApp1
                 sqlConnection.Open();
                 sqlCommand.CommandText = s;
                 sqlCommand.ExecuteNonQuery();
+                /*
+                 * select code 
+                 * where name = 
+                 * 
+                 * insert into BankAdd
+                 * values (addres,code)
+                 * 
+                 */
                 LoadBankData();
                 MessageBox.Show("Bank Added successfully!");
                 //LoadEmployeeData();
@@ -51,13 +60,13 @@ namespace WindowsFormsApp1
                 sqlConnection.Close();
             }
         }
-    
+
 
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnection = new SqlConnection(connectionString);
-            string s = "DELETE FROM BANK WHERE BANK_NAME ='"+BankName.Text+ "' AND CODE = '" + Code.Text + "';";
+            string s = "DELETE FROM BANK WHERE BANK_NAME ='" + BankName.Text + "' AND CODE = '" + Code.Text + "';";
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
             try
@@ -84,7 +93,7 @@ namespace WindowsFormsApp1
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnection = new SqlConnection(connectionString);
-            string s = "UPDATE BANK SET BANK_NAME = '"+BankName.Text+ "' WHERE CODE = '"+Code.Text+"';";
+            string s = "UPDATE BANK SET BANK_NAME = '" + BankName.Text + "' WHERE CODE = '" + Code.Text + "';";
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = sqlConnection;
             try
@@ -144,7 +153,7 @@ namespace WindowsFormsApp1
         {
             BankName.Text = "";
             Code.Text = "";
-            
+
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -161,5 +170,5 @@ namespace WindowsFormsApp1
 
         }
     }
-    }
+}
 
