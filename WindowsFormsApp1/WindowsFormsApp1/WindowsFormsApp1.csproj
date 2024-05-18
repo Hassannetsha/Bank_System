@@ -75,6 +75,12 @@
     <Compile Include="Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,12 @@
     </Compile>
     <Compile Include="LoginForm.designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCustomers.Designer.cs">
+      <DependentUpon>ManageCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageEmployees.cs">
       <SubType>Form</SubType>
@@ -130,6 +142,9 @@
     <EmbeddedResource Include="Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageCustomers.resx">
+      <DependentUpon>ManageCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageEmployees.resx">
       <DependentUpon>ManageEmployees.cs</DependentUpon>

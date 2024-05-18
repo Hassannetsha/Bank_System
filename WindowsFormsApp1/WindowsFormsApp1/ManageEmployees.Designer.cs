@@ -238,6 +238,7 @@
             this.EmployeeGridVIew.RowTemplate.Height = 24;
             this.EmployeeGridVIew.Size = new System.Drawing.Size(414, 246);
             this.EmployeeGridVIew.TabIndex = 18;
+            this.EmployeeGridVIew.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeeGridVIew_CellContentClick);
             // 
             // eMPLOYEEIDDataGridViewTextBoxColumn
             // 

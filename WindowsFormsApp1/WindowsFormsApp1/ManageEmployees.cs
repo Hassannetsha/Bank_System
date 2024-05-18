@@ -317,5 +317,9 @@ namespace WindowsFormsApp1
             txt_EmpEmail.Text = "";
         }
 
+        private void EmployeeGridVIew_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
