@@ -73,6 +73,7 @@
             this.EmployeeBtn.TabIndex = 6;
             this.EmployeeBtn.Text = "Employee";
             this.EmployeeBtn.UseVisualStyleBackColor = true;
+            this.EmployeeBtn.Click += new System.EventHandler(this.EmployeeBtn_Click);
             // 
             // CustomerBtn
             // 

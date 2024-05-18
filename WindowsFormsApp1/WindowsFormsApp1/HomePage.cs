@@ -48,5 +48,11 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void EmployeeBtn_Click(object sender, EventArgs e)
+        {
+            EmployeeForm empform = new EmployeeForm();
+            empform.Show();
+        }
     }
 }
