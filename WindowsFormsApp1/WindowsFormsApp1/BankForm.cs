@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
             
             try
             {
+                // comment
                 sqlConnection.Open();
                 sqlCommand.CommandText = s;
                 sqlCommand.ExecuteNonQuery();
@@ -150,6 +151,11 @@ namespace WindowsFormsApp1
         }
 
         private void Id_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BankForm_Load(object sender, EventArgs e)
         {
 
         }
