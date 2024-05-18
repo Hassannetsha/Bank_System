@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace WindowsFormsApp1
 {
     public partial class loan_form : Form
     {
+        private string connectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         public loan_form()
         {
             InitializeComponent();
@@ -20,8 +20,8 @@ namespace WindowsFormsApp1
 
         private void loan_form_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bankSystemDataSet.LOAN' table. You can move, or remove it, as needed.
-            this.lOANTableAdapter.Fill(this.bankSystemDataSet.LOAN);
+
+            LoadLoanData();
 
         }
 
@@ -77,6 +77,39 @@ namespace WindowsFormsApp1
             con.Close();
             MessageBox.Show("done!");
             this.lOANTableAdapter.Fill(this.bankSystemDataSet.LOAN);
+        }
+        private void LoadLoanData()
+        {
+            try
+            {
+                // Create a new SqlConnection and set the connection string
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // Define the query to retrieve data from the EMPLOYEE table
+                    string query = "SELECT * FROM LOAN";
+
+                    // Create a SqlDataAdapter to execute the query and fill the DataTable
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        // Create a DataTable to hold the retrieved data
+                        DataTable LoanTable = new DataTable();
+
+                        // Fill the DataTable with data from the SqlDataAdapter
+                        adapter.Fill(LoanTable);
+
+                        // Set the DataSource of the DataGridView to the DataTable
+                        dataGridView1.DataSource = LoanTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show an error message if something goes wrong
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }

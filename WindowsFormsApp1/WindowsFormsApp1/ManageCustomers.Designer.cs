@@ -56,16 +56,16 @@
             this.eMAILDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dATEOFBIRTHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nATIONALIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUSTOMERBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cUSTOMERBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bankSystemDataSet = new WindowsFormsApp1.BankSystemDataSet();
+            this.cUSTOMERBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.txt_CustID = new System.Windows.Forms.TextBox();
             this.cUSTOMERTableAdapter = new WindowsFormsApp1.BankSystemDataSetTableAdapters.CUSTOMERTableAdapter();
-            this.cUSTOMERBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -306,15 +306,20 @@
             this.nATIONALIDDataGridViewTextBoxColumn.Name = "nATIONALIDDataGridViewTextBoxColumn";
             this.nATIONALIDDataGridViewTextBoxColumn.Width = 125;
             // 
-            // cUSTOMERBindingSource
+            // cUSTOMERBindingSource1
             // 
-            this.cUSTOMERBindingSource.DataMember = "CUSTOMER";
-            this.cUSTOMERBindingSource.DataSource = this.bankSystemDataSet;
+            this.cUSTOMERBindingSource1.DataMember = "CUSTOMER";
+            this.cUSTOMERBindingSource1.DataSource = this.bankSystemDataSet;
             // 
             // bankSystemDataSet
             // 
             this.bankSystemDataSet.DataSetName = "BankSystemDataSet";
             this.bankSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cUSTOMERBindingSource
+            // 
+            this.cUSTOMERBindingSource.DataMember = "CUSTOMER";
+            this.cUSTOMERBindingSource.DataSource = this.bankSystemDataSet;
             // 
             // label8
             // 
@@ -336,11 +341,6 @@
             // cUSTOMERTableAdapter
             // 
             this.cUSTOMERTableAdapter.ClearBeforeFill = true;
-            // 
-            // cUSTOMERBindingSource1
-            // 
-            this.cUSTOMERBindingSource1.DataMember = "CUSTOMER";
-            this.cUSTOMERBindingSource1.DataSource = this.bankSystemDataSet;
             // 
             // ManageCustomers
             // 
@@ -372,9 +372,9 @@
             this.Text = "ManageCustomers";
             this.Load += new System.EventHandler(this.ManageCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cUSTOMERBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
