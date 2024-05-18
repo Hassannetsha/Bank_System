@@ -40,7 +40,9 @@ namespace WindowsFormsApp1
             string firstName = F_name.Text;
             if (IsValidUser(customerID, nationalID, firstName))
             {
-                MessageBox.Show("valid");
+                Customer mainForm = new Customer(customerID);
+                mainForm.Show();
+                this.Hide();
             }
             else
             {

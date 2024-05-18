@@ -15,8 +15,7 @@ namespace WindowsFormsApp1
         public Customer()
         {
             InitializeComponent();
-            btn_Request.Click += btn_Request_Click;
-            btn_Account.Click += btn_Account_Click;
+            
         }
 
         private void btn_Request_Click(object sender, EventArgs e)
