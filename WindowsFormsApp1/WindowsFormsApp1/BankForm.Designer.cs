@@ -169,6 +169,7 @@ namespace WindowsFormsApp1
             this.BankAddress.Name = "BankAddress";
             this.BankAddress.Size = new System.Drawing.Size(202, 30);
             this.BankAddress.TabIndex = 12;
+            this.BankAddress.TextChanged += new System.EventHandler(this.BankAddress_TextChanged);
             // 
             // BankForm
             // 
