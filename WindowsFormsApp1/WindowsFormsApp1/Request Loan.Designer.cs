@@ -169,18 +169,7 @@
             this.btn_Request.Text = "Request Loan";
             this.btn_Request.UseVisualStyleBackColor = true;
             this.btn_Request.Click += new System.EventHandler(this.btn_Request_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "3am bavly",
-            "7oda el makhsy",
-            "mestive el 3antel"});
-            this.comboBox1.Location = new System.Drawing.Point(484, 252);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 12;
+
             // 
             // txt_AccountId
             // 
