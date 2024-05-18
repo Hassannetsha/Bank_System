@@ -23,98 +23,142 @@ namespace WindowsFormsApp1
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
-            string s = "INSERT INTO BANK VALUES ('" + BankName.Text + "')";
-            /*string s2 = "INSERT INTO BANK_ADDRESSES VALUES ('" + BankAddress.Text + "','""')";*/
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Connection = sqlConnection;
-
-
-            try
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                // comment
-                sqlConnection.Open();
-                sqlCommand.CommandText = s;
-                sqlCommand.ExecuteNonQuery();
-                /*
-                 * select code 
-                 * where name = 
-                 * 
-                 * insert into BankAdd
-                 * values (addres,code)
-                 * 
-                 */
-                LoadBankData();
-                MessageBox.Show("Bank Added successfully!");
-                //LoadEmployeeData();
-            }
-            catch (Exception ex)
-            {
+                string insertBankQuery = "INSERT INTO BANK (BANK_NAME) VALUES (@BankName); SELECT SCOPE_IDENTITY();";
+                string insertAddressQuery = "INSERT INTO BANK_ADDRESSES (BANK_ADDRESS, BANK_CODE) VALUES (@BankAddress, @BankCode)";
 
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                ClearFeilds();
-                sqlConnection.Close();
+                try
+                {
+                    sqlConnection.Open();
+
+                    // Insert into BANK and get the newly generated CODE
+                    using (SqlCommand sqlCommand = new SqlCommand(insertBankQuery, sqlConnection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@BankName", BankName.Text);
+
+                        // Execute the query and get the new CODE
+                        decimal newBankCode = (decimal)sqlCommand.ExecuteScalar();
+
+                        // Insert into BANK_ADDRESSES using the new CODE
+                        using (SqlCommand addressCommand = new SqlCommand(insertAddressQuery, sqlConnection))
+                        {
+                            addressCommand.Parameters.AddWithValue("@BankAddress", BankAddress.Text);
+                            addressCommand.Parameters.AddWithValue("@BankCode", newBankCode);
+
+                            addressCommand.ExecuteNonQuery();
+                        }
+                    }
+
+                    LoadBankData();
+                    MessageBox.Show("Bank added successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    ClearFeilds();
+                    sqlConnection.Close();
+                }
             }
         }
+
 
 
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
-            string s = "DELETE FROM BANK WHERE BANK_NAME ='" + BankName.Text + "' AND CODE = '" + Code.Text + "';";
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Connection = sqlConnection;
-            try
+            if (string.IsNullOrWhiteSpace(BankName.Text) || string.IsNullOrWhiteSpace(Code.Text))
             {
-                sqlConnection.Open();
-                sqlCommand.CommandText = s;
-                sqlCommand.ExecuteNonQuery();
-                LoadBankData();
-                MessageBox.Show("Bank Deleted successfully!");
-                //LoadEmployeeData();
+                MessageBox.Show("Please provide both Bank Name and Code.");
+                return;
             }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                ClearFeilds();
-                sqlConnection.Close();
+                string deleteQuery = "DELETE FROM BANK WHERE BANK_NAME = @BankName AND CODE = @Code";
+
+                try
+                {
+                    sqlConnection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(deleteQuery, sqlConnection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@BankName", BankName.Text);
+                        sqlCommand.Parameters.AddWithValue("@Code", Code.Text);
+
+                        int rowsAffected = sqlCommand.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Bank deleted successfully!");
+                            LoadBankData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No bank found with the provided details.");
+                        }
+                        LoadBankData();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    ClearFeilds();
+                    sqlConnection.Close();
+                }
             }
         }
+
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
-            string s = "UPDATE BANK SET BANK_NAME = '" + BankName.Text + "' WHERE CODE = '" + Code.Text + "';";
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Connection = sqlConnection;
-            try
+            if (string.IsNullOrWhiteSpace(BankName.Text) || string.IsNullOrWhiteSpace(Code.Text))
             {
-                sqlConnection.Open();
-                sqlCommand.CommandText = s;
-                sqlCommand.ExecuteNonQuery();
-                LoadBankData();
-                MessageBox.Show("Bank Updated successfully!");
-                //LoadEmployeeData();
+                MessageBox.Show("Please provide both Bank Name and Code.");
+                return;
             }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                ClearFeilds();
-                sqlConnection.Close();
+                string updateQuery = "UPDATE BANK SET BANK_NAME = @BankName WHERE CODE = @Code";
+
+                try
+                {
+                    sqlConnection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(updateQuery, sqlConnection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@BankName", BankName.Text);
+                        sqlCommand.Parameters.AddWithValue("@Code", Code.Text);
+
+                        int rowsAffected = sqlCommand.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Bank updated successfully!");
+                            LoadBankData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No bank found with the provided details.");
+                        }
+                        LoadBankData();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    ClearFeilds();
+                    sqlConnection.Close();
+                }
             }
         }
+
         private void LoadBankData()
         {
             try
@@ -151,6 +195,7 @@ namespace WindowsFormsApp1
         private void ClearFeilds()
         {
             BankName.Text = "";
+            BankAddress.Text = "";
             Code.Text = "";
 
         }
@@ -165,6 +210,11 @@ namespace WindowsFormsApp1
         }
 
         private void BankForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BankAddress_TextChanged(object sender, EventArgs e)
         {
 
         }
