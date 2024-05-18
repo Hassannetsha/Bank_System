@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
             
             try
             {
+                //comment
                 // comment
                 sqlConnection.Open();
                 sqlCommand.CommandText = s;
