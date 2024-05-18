@@ -365,62 +365,62 @@ go
 
 alter table ACCOUNT
    add constraint FK_ACCOUNT_REFERENCE_CUSTOMER foreign key (CUSTOMERID)
-      references CUSTOMER (CUSTOMERID)
+      references CUSTOMER (CUSTOMERID)on delete cascade on update cascade
 go
 
 alter table BANK_ADDRESSES
    add constraint FK_BANK_ADD_REFERENCE_BANK foreign key (BANK_CODE)
-      references BANK (CODE)
+      references BANK (CODE)on delete cascade on update cascade
 go
 
 alter table BRANCH
    add constraint FK_BRANCH_REFERENCE_BANK foreign key (BANK_CODE)
-      references BANK (CODE)
+      references BANK (CODE)on delete cascade on update cascade
 go
 
 alter table BRANCH_CUSTOMER
    add constraint FK_BRANCH_C_REFERENCE_CUSTOMER foreign key (CUST_SSN)
-      references CUSTOMER (CUSTOMERID)
+      references CUSTOMER (CUSTOMERID)on delete cascade on update cascade
 go
 
 alter table BRANCH_CUSTOMER
    add constraint FK_BRANCH_C_REFERENCE_BRANCH foreign key (BRANCH_NUMBER)
-      references BRANCH (BRANCH_NUMBER)
+      references BRANCH (BRANCH_NUMBER)on delete cascade on update cascade
 go
 
 alter table BRANCH_LOANS
    add constraint FK_BRANCH_L_REFERENCE_BRANCH foreign key (BRANCH_NUMBER)
-      references BRANCH (BRANCH_NUMBER)
+      references BRANCH (BRANCH_NUMBER)on delete cascade on update cascade
 go
 
 alter table BRANCH_LOANS
    add constraint FK_BRANCH_L_REFERENCE_LOAN foreign key (LOAN_NUMBER)
-      references LOAN (LOAN_NUMBER)
+      references LOAN (LOAN_NUMBER)on delete cascade on update cascade
 go
 
 alter table CREDIT_CARD
    add constraint FK_CREDIT_C_REFERENCE_CREDIT_C foreign key (ACCOUNTID)
-      references CREDIT_CARD_ACCOUNT (ACCOUNTID)
+      references CREDIT_CARD_ACCOUNT (ACCOUNTID)on delete cascade on update cascade
 go
 
 alter table CREDIT_CARD_ACCOUNT
    add constraint FK_CREDIT_C_REFERENCE_ACCOUNT foreign key (ACCOUNTID)
-      references ACCOUNT (ACCOUNTID)
+      references ACCOUNT (ACCOUNTID)on delete cascade on update cascade
 go
 
 alter table EMPLOYEE
    add constraint FK_EMPLOYEE_REFERENCE_BRANCH foreign key (BARNCH_NUMBER)
-      references BRANCH (BRANCH_NUMBER)
+      references BRANCH (BRANCH_NUMBER)on delete cascade on update cascade
 go
 
 alter table LOAN
    add constraint FK_LOAN_REFERENCE_LOANACCO foreign key (ACCOUNTID)
-      references LOANACCOUNT (ACCOUNTID)
+      references LOANACCOUNT (ACCOUNTID)on delete cascade on update cascade
 go
 
 alter table LOAN
    add constraint FK_LOAN_REFERENCE_CUSTOMER foreign key (CUSTOMERID)
-      references CUSTOMER (CUSTOMERID)
+      references CUSTOMER (CUSTOMERID)on delete cascade on update cascade
 go
 
 alter table LOAN
@@ -435,6 +435,6 @@ go
 
 alter table TRANSCATION
    add constraint FK_TRANSCAT_REFERENCE_ACCOUNT foreign key (ACCOUNTID)
-      references ACCOUNT (ACCOUNTID)
+      references ACCOUNT (ACCOUNTID)on delete cascade on update cascade
 go
 
