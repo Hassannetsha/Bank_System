@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public AdminForm()
         {
             InitializeComponent();
+
         }
 
         private void btnBank_Click(object sender, EventArgs e)
@@ -24,6 +25,11 @@ namespace WindowsFormsApp1
         }
 
         private void btnBranch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnManageEmployees_Click(object sender, EventArgs e)
         {
 
         }

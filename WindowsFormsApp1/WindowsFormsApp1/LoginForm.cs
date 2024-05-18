@@ -37,29 +37,31 @@ namespace WindowsFormsApp1
         {
             string customerID = CustmID.Text;
             string nationalID = NatID.Text;
-            if (IsValidUser(customerID, nationalID))
+            string firstName = F_name.Text;
+            if (IsValidUser(customerID, nationalID, firstName))
             {
                 MessageBox.Show("valid");
             }
             else
             {
-                MessageBox.Show("Invalid Customer ID or National ID", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Customer ID , National ID or First name", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private bool IsValidUser(string customerID, string nationalID)
+        private bool IsValidUser(string customerID, string nationalID, string firstName)
         {
             bool isValid = false;
 
             string connectionString = "Server=desktop-1o5tpi7;Database=BankSystem;Integrated Security=True;";
 
-            string query = "SELECT COUNT(*) FROM CUSTOMER WHERE CUSTOMERID = @CustomerID AND NATIONALID = @NationalID";
+            string query = "SELECT COUNT(*) FROM CUSTOMER WHERE CUSTOMERID = @CustomerID AND NATIONALID = @NationalID AND FNAME= @firstName";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@CustomerID", customerID);
                 cmd.Parameters.AddWithValue("@NationalID", nationalID);
+                cmd.Parameters.AddWithValue("@firstName", F_name);
 
                 try
                 {
