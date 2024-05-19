@@ -26,7 +26,8 @@ namespace WindowsFormsApp1
 
         private void btnBranch_Click(object sender, EventArgs e)
         {
-
+            BranchForm branchForm = new BranchForm();
+            branchForm.Show();
         }
 
         private void btnManageEmployees_Click(object sender, EventArgs e)
