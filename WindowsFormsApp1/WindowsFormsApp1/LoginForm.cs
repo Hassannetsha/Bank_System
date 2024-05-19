@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string customerID = CustmID.Text;
+            int customerID = int.Parse(CustmID.Text);
             string nationalID = NatID.Text;
             string firstName = F_name.Text;
             if (IsValidUser(customerID, nationalID, firstName))
@@ -50,11 +50,11 @@ namespace WindowsFormsApp1
             }
         }
 
-        private bool IsValidUser(string customerID, string nationalID, string firstName)
+        private bool IsValidUser(int customerID, string nationalID, string firstName)
         {
             bool isValid = false;
 
-            string connectionString = "Server=desktop-1o5tpi7;Database=BankSystem;Integrated Security=True;";
+            string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
 
             string query = "SELECT COUNT(*) FROM CUSTOMER WHERE CUSTOMERID = @CustomerID AND NATIONALID = @NationalID AND FNAME= @firstName";
 
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@CustomerID", customerID);
                 cmd.Parameters.AddWithValue("@NationalID", nationalID);
-                cmd.Parameters.AddWithValue("@firstName", F_name);
+                cmd.Parameters.AddWithValue("@firstName", firstName);
 
                 try
                 {
