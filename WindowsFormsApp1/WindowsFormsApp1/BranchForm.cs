@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     public partial class BranchForm : Form
     {
 
-        string sql = "Data Source=DESKTOP-F9CRI1I\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        string sql = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
 
         public BranchForm()
         {
@@ -159,5 +159,7 @@ namespace WindowsFormsApp1
             LoadBranchTable();
 
         }
+
+       
     }
 }

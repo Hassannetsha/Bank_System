@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
         {
             AdminForm F2 = new AdminForm();
             F2.Show();
-            this.Hide();
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)

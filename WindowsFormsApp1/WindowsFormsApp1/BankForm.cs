@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class BankForm : Form
     {
-        string connectionString = "Data Source=HASSANMUHAMMED\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         public BankForm()
         {
             InitializeComponent();

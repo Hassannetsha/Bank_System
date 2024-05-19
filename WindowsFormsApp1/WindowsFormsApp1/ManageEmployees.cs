@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class ManageEmployees : Form
     {
-        private string connectionString = "Data Source=DESKTOP-F9CRI1I\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         public ManageEmployees()
         {
             InitializeComponent();
