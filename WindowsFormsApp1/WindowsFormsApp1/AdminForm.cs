@@ -31,7 +31,8 @@ namespace WindowsFormsApp1
 
         private void btnManageEmployees_Click(object sender, EventArgs e)
         {
-
+            ManageEmployees manageEmployees = new ManageEmployees();
+            manageEmployees.Show();
         }
     }
 }

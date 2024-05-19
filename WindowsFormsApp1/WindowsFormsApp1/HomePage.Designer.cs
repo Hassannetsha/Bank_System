@@ -56,7 +56,7 @@
             // AdminBtn
             // 
             this.AdminBtn.Location = new System.Drawing.Point(319, 154);
-            this.AdminBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminBtn.Name = "AdminBtn";
             this.AdminBtn.Size = new System.Drawing.Size(169, 54);
             this.AdminBtn.TabIndex = 5;
@@ -67,7 +67,7 @@
             // EmployeeBtn
             // 
             this.EmployeeBtn.Location = new System.Drawing.Point(319, 226);
-            this.EmployeeBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EmployeeBtn.Margin = new System.Windows.Forms.Padding(4);
             this.EmployeeBtn.Name = "EmployeeBtn";
             this.EmployeeBtn.Size = new System.Drawing.Size(169, 54);
             this.EmployeeBtn.TabIndex = 6;
@@ -77,7 +77,7 @@
             // CustomerBtn
             // 
             this.CustomerBtn.Location = new System.Drawing.Point(319, 299);
-            this.CustomerBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerBtn.Name = "CustomerBtn";
             this.CustomerBtn.Size = new System.Drawing.Size(169, 54);
             this.CustomerBtn.TabIndex = 7;
@@ -97,6 +97,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HomePage";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.HomePage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

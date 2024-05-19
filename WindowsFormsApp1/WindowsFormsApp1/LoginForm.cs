@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
             {
                 Customer mainForm = new Customer(customerID);
                 mainForm.Show();
-                this.Hide();
+             
             }
             else
             {
