@@ -13,22 +13,23 @@ namespace WindowsFormsApp1
 {
     public partial class TransactionForm : Form
     {
-        string connectionString = "Data Source=HASSANMUHAMMED\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         int CustomerID;
         public TransactionForm(int customerID)
         {
             InitializeComponent();
             CustomerID = customerID;
             LoadTransactionData();
+            LoadAccountData();
         }
-       
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
         private void LoadTransactionData()
-        { 
+        {
             try
             {
                 // Create a new SqlConnection and set the connection string
@@ -71,6 +72,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
         private void LoadAccountData()
         {
             try
@@ -94,7 +96,7 @@ namespace WindowsFormsApp1
                         adapter.Fill(AccountTable);
 
                         // Set the DataSource of the DataGridView to the DataTable
-                        dataGridView1.DataSource = AccountTable;
+                        dataGridView2.DataSource = AccountTable;
                     }
                 }
             }
@@ -105,30 +107,78 @@ namespace WindowsFormsApp1
             }
         }
 
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // Database connection string
+            decimal transactionAmount;
+            if (!decimal.TryParse(Amount.Text, out transactionAmount))
+            {
+                MessageBox.Show("Please enter a valid transaction amount.");
+                return;
+            }
+
+            string accountId = Id.Text;
+
+            // SQL query to retrieve the current balance for the account
+            string balanceQuery = "SELECT BALANCE FROM ACCOUNT WHERE ACCOUNTID = @ACCOUNTID";
+
             // SQL insert command for TRANSCATION table
             string insertQuery = "INSERT INTO TRANSCATION (ACCOUNTID, TRANSACTION_DATE, TRANSACTION_AMOUNT, TRANSACTION_TYPE, DESCRIPTION) " +
                                  "VALUES (@ACCOUNTID, @TRANSACTION_DATE, @TRANSACTION_AMOUNT, @TRANSACTION_TYPE, @DESCRIPTION)";
 
-            // Execute the insert command
+            // SQL update command for ACCOUNT table
+            string updateQuery = "UPDATE ACCOUNT SET BALANCE = BALANCE - @TRANSACTION_AMOUNT WHERE ACCOUNTID = @ACCOUNTID";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(insertQuery, connection);
-                // Set parameter values
-                command.Parameters.AddWithValue("@ACCOUNTID", Id.Text);
-                command.Parameters.AddWithValue("@TRANSACTION_DATE", DateTime.Now); // Insert current date and time
-                command.Parameters.AddWithValue("@TRANSACTION_AMOUNT", Amount.Text);
-                command.Parameters.AddWithValue("@TRANSACTION_TYPE", Type.Text);
-                command.Parameters.AddWithValue("@DESCRIPTION", Description.Text);
+                SqlCommand balanceCommand = new SqlCommand(balanceQuery, connection);
+                SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+                SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+
+                // Set parameter values for balance command
+                balanceCommand.Parameters.AddWithValue("@ACCOUNTID", accountId);
+
+                // Set parameter values for insert and update commands
+                insertCommand.Parameters.AddWithValue("@ACCOUNTID", accountId);
+                insertCommand.Parameters.AddWithValue("@TRANSACTION_DATE", DateTime.Now); // Insert current date and time
+                insertCommand.Parameters.AddWithValue("@TRANSACTION_AMOUNT", transactionAmount);
+                insertCommand.Parameters.AddWithValue("@TRANSACTION_TYPE", Type.Text);
+                insertCommand.Parameters.AddWithValue("@DESCRIPTION", Description.Text);
+
+                updateCommand.Parameters.AddWithValue("@ACCOUNTID", accountId);
+                updateCommand.Parameters.AddWithValue("@TRANSACTION_AMOUNT", transactionAmount);
+
                 try
                 {
                     connection.Open();
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Transaction added successfully.");
-                    LoadTransactionData(); // Refresh transaction data in UI
+
+                    // Retrieve the current balance
+                    decimal currentBalance = (decimal)balanceCommand.ExecuteScalar();
+
+                    // Check if the transaction amount exceeds the current balance
+                    if (transactionAmount > currentBalance)
+                    {
+                        MessageBox.Show("Insufficient balance for this transaction.");
+                        return;
+                    }
+
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        insertCommand.Transaction = transaction;
+                        updateCommand.Transaction = transaction;
+
+                        // Execute the insert command
+                        insertCommand.ExecuteNonQuery();
+
+                        // Execute the update command
+                        updateCommand.ExecuteNonQuery();
+
+                        // Commit the transaction
+                        transaction.Commit();
+
+                        MessageBox.Show("Transaction added and balance updated successfully.");
+                        LoadTransactionData();
+                        LoadAccountData(); // Refresh account data in UI
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -137,6 +187,16 @@ namespace WindowsFormsApp1
             }
         }
 
-       
+
+
+        private void TransactionForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

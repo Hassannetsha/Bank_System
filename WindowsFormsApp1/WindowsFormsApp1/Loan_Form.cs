@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class loan_form : Form
     {
-        private string connectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         public loan_form()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+            con.ConnectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 int ctn = 0;
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
                             cmd.ExecuteNonQuery();
                             con.Close();
                             MessageBox.Show("done!");
-                            this.lOANTableAdapter.Fill(this.bankSystemDataSet.LOAN);
+                            LoadLoanData();
                             break;
                         }
                     }
@@ -70,7 +70,7 @@ namespace WindowsFormsApp1
         private void btn_reject_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+            con.ConnectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
             SqlCommand cmd = new SqlCommand("delete from LOAN where LOAN_NUMBER = '" + txt_loan_num.Text + "';", con);
             con.Open();
             cmd.ExecuteNonQuery();

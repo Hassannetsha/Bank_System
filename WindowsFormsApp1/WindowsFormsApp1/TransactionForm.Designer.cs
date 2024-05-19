@@ -119,6 +119,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(610, 264);
             this.dataGridView1.TabIndex = 7;
+            
             // 
             // label4
             // 

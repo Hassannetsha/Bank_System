@@ -33,13 +33,13 @@
             this.aCCOUNTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.aCCOUNTTableAdapter = new WindowsFormsApp1.BankSystemDataSetTableAdapters.ACCOUNTTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.aCCOUNTBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.aCCOUNTIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cUSTOMERIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bALANCEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tYPEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iNTERESTRATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.oPENDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aCCOUNTBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bankSystemDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,11 +78,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(795, 367);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // aCCOUNTBindingSource1
-            // 
-            this.aCCOUNTBindingSource1.DataMember = "ACCOUNT";
-            this.aCCOUNTBindingSource1.DataSource = this.bankSystemDataSet;
+           
             // 
             // aCCOUNTIDDataGridViewTextBoxColumn
             // 
@@ -132,6 +128,11 @@
             this.oPENDATEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.oPENDATEDataGridViewTextBoxColumn.Name = "oPENDATEDataGridViewTextBoxColumn";
             this.oPENDATEDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // aCCOUNTBindingSource1
+            // 
+            this.aCCOUNTBindingSource1.DataMember = "ACCOUNT";
+            this.aCCOUNTBindingSource1.DataSource = this.bankSystemDataSet;
             // 
             // Account_Info
             // 

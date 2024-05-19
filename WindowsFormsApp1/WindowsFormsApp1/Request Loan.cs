@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Request_Loan : Form
     {
-        private string connectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         int CustomerID;
         public Request_Loan(int customerID)
         {
@@ -78,8 +78,8 @@ namespace WindowsFormsApp1
             con.Close(); */
 
             // Insert command
-            string insertQuery = "INSERT INTO LOAN (EMP_SSN,ACCOUNTID,LOAN_TYPE, LOAN_AMOUNT, INTERESTRATE, ORIGINATIONDATE) " +
-                                 "VALUES (null,@AccountId,@LoanType, @LoanAmount, @InterestRate, @OriginationDate)";
+            string insertQuery = "INSERT INTO LOAN (EMP_SSN,ACCOUNTID,CUSTOMERID,LOAN_TYPE, LOAN_AMOUNT, INTERESTRATE, ORIGINATIONDATE) " +
+                                 "VALUES (1,@AccountId,@CustomerId, @LoanType, @LoanAmount, @InterestRate, @OriginationDate)";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -87,6 +87,7 @@ namespace WindowsFormsApp1
                 {
                     // Add parameters with appropriate data types
                     cmd.Parameters.AddWithValue("@AccountId", txt_AccountId.Text);
+                    cmd.Parameters.AddWithValue("@CustomerId", CustomerID);
                     cmd.Parameters.AddWithValue("@LoanType", text_LoanType.Text);
                     cmd.Parameters.AddWithValue("@LoanAmount", Convert.ToDecimal(text_LoanAmount.Text));
                     cmd.Parameters.AddWithValue("@InterestRate", Convert.ToDouble(text_Interestrate.Text));
