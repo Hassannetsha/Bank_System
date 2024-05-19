@@ -32,6 +32,7 @@
             this.btnBank = new System.Windows.Forms.Button();
             this.btnBranch = new System.Windows.Forms.Button();
             this.btnManageEmployees = new System.Windows.Forms.Button();
+            this.btn_ViewReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +61,7 @@
             // btnBranch
             // 
             this.btnBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBranch.Location = new System.Drawing.Point(240, 263);
+            this.btnBranch.Location = new System.Drawing.Point(240, 226);
             this.btnBranch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBranch.Name = "btnBranch";
             this.btnBranch.Size = new System.Drawing.Size(204, 59);
@@ -72,7 +73,7 @@
             // btnManageEmployees
             // 
             this.btnManageEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageEmployees.Location = new System.Drawing.Point(240, 389);
+            this.btnManageEmployees.Location = new System.Drawing.Point(240, 322);
             this.btnManageEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManageEmployees.Name = "btnManageEmployees";
             this.btnManageEmployees.Size = new System.Drawing.Size(204, 66);
@@ -81,11 +82,24 @@
             this.btnManageEmployees.UseVisualStyleBackColor = true;
             this.btnManageEmployees.Click += new System.EventHandler(this.btnManageEmployees_Click);
             // 
+            // btn_ViewReport
+            // 
+            this.btn_ViewReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ViewReport.Location = new System.Drawing.Point(240, 426);
+            this.btn_ViewReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_ViewReport.Name = "btn_ViewReport";
+            this.btn_ViewReport.Size = new System.Drawing.Size(204, 66);
+            this.btn_ViewReport.TabIndex = 4;
+            this.btn_ViewReport.Text = "View Bank System Report";
+            this.btn_ViewReport.UseVisualStyleBackColor = true;
+            this.btn_ViewReport.Click += new System.EventHandler(this.btn_ViewReport_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 549);
+            this.Controls.Add(this.btn_ViewReport);
             this.Controls.Add(this.btnManageEmployees);
             this.Controls.Add(this.btnBranch);
             this.Controls.Add(this.btnBank);
@@ -104,5 +118,6 @@
         private System.Windows.Forms.Button btnBank;
         private System.Windows.Forms.Button btnBranch;
         private System.Windows.Forms.Button btnManageEmployees;
+        private System.Windows.Forms.Button btn_ViewReport;
     }
 }

@@ -35,5 +35,11 @@ namespace WindowsFormsApp1
             ManageEmployees manageEmployees = new ManageEmployees();
             manageEmployees.Show();
         }
+
+        private void btn_ViewReport_Click(object sender, EventArgs e)
+        {
+           Report reportform = new Report();
+            reportform.Show();
+        }
     }
 }
