@@ -75,5 +75,89 @@ namespace WindowsFormsApp1
         {
             LoadBranchTable();
         }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(sql);
+
+            connection.Open();
+
+            string query = "INSERT INTO BRANCH (BANK_CODE, BARNCH_ADDRESS, CITY, STATE, ZIPCODE)" +
+                "VALUES (@BANK_CODE, @BARNCH_ADDRESS, @CITY, @STATE, @ZIPCODE)";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@BANK_CODE", branchCodeInput.Text);
+            cmd.Parameters.AddWithValue("@BARNCH_ADDRESS", BranchAddressInput.Text);
+            cmd.Parameters.AddWithValue("@CITY", CityInput.Text);
+            cmd.Parameters.AddWithValue("@STATE", StateInput.Text);
+            cmd.Parameters.AddWithValue("@ZIPCODE", ZipCodeInput.Text);
+
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            MessageBox.Show("Branch Added Successfully!");
+
+            LoadBranchTable();
+
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            branchCodeInput.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            BranchAddressInput.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            CityInput.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            StateInput.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            ZipCodeInput.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            string query = "UPDATE BRANCH " +
+                "SET BANK_CODE=@BANK_CODE, BARNCH_ADDRESS=@BARNCH_ADDRESS, CITY=@CITY, STATE=@STATE, ZIPCODE=@ZIPCODE " +
+                "WHERE BRANCH_NUMBER = " + dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
+            SqlConnection connection = new SqlConnection(sql);
+
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@BANK_CODE", branchCodeInput.Text);
+            cmd.Parameters.AddWithValue("@BARNCH_ADDRESS", BranchAddressInput.Text);
+            cmd.Parameters.AddWithValue("@CITY", CityInput.Text);
+            cmd.Parameters.AddWithValue("@STATE", StateInput.Text);
+            cmd.Parameters.AddWithValue("@ZIPCODE", ZipCodeInput.Text);
+
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            MessageBox.Show("Cell Updated Successfully!");
+
+            LoadBranchTable();
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            string query = "DELETE FROM BRANCH WHERE BRANCH_NUMBER = " + dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
+            SqlConnection connection = new SqlConnection(sql);
+
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            MessageBox.Show("Cell Deleted Successfully!");
+
+            LoadBranchTable();
+
+        }
     }
 }

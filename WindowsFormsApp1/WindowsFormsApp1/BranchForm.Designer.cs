@@ -113,7 +113,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(575, 96);
+            this.label4.Location = new System.Drawing.Point(573, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 24);
             this.label4.TabIndex = 6;
@@ -142,7 +142,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Location = new System.Drawing.Point(334, 19);
+            this.label6.Location = new System.Drawing.Point(385, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 29);
             this.label6.TabIndex = 10;
@@ -155,33 +155,37 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(694, 262);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(752, 195);
+            this.AddBtn.Location = new System.Drawing.Point(752, 202);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(109, 47);
             this.AddBtn.TabIndex = 12;
             this.AddBtn.Text = "Add";
             this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(752, 259);
+            this.UpdateBtn.Location = new System.Drawing.Point(752, 269);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(109, 47);
             this.UpdateBtn.TabIndex = 13;
             this.UpdateBtn.Text = "Update";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(752, 324);
+            this.DeleteBtn.Location = new System.Drawing.Point(752, 337);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(109, 47);
             this.DeleteBtn.TabIndex = 14;
             this.DeleteBtn.Text = "Delete";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // BranchForm
             // 
