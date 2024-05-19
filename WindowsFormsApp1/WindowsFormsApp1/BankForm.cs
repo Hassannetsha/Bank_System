@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -112,39 +113,55 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(BankName.Text) || string.IsNullOrWhiteSpace(Code.Text))
+            if (string.IsNullOrWhiteSpace(BankName.Text) || string.IsNullOrWhiteSpace(Code.Text) || string.IsNullOrWhiteSpace(BankAddress.Text))
             {
-                MessageBox.Show("Please provide both Bank Name and Code.");
+                MessageBox.Show("Please provide Bank Name, Code, and Address.");
                 return;
             }
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                string updateQuery = "UPDATE BANK SET BANK_NAME = @BankName WHERE CODE = @Code";
+                string updateBankQuery = "UPDATE BANK SET BANK_NAME = @BankName WHERE CODE = @Code";
+                string updateAddressQuery = "UPDATE BANK_ADDRESSES SET BANK_ADDRESS = @Address WHERE BANK_CODE = @Code";
 
                 try
                 {
                     sqlConnection.Open();
-                    using (SqlCommand sqlCommand = new SqlCommand(updateQuery, sqlConnection))
-                    {
-                        sqlCommand.Parameters.AddWithValue("@BankName", BankName.Text);
-                        sqlCommand.Parameters.AddWithValue("@Code", Code.Text);
 
-                        int rowsAffected = sqlCommand.ExecuteNonQuery();
-                        if (rowsAffected > 0)
+                    // Start a transaction
+                    SqlTransaction transaction = sqlConnection.BeginTransaction();
+
+                    using (SqlCommand bankCommand = new SqlCommand(updateBankQuery, sqlConnection, transaction))
+                    {
+                        bankCommand.Parameters.AddWithValue("@BankName", BankName.Text);
+                        bankCommand.Parameters.AddWithValue("@Code", Code.Text);
+
+                        int bankRowsAffected = bankCommand.ExecuteNonQuery();
+
+                        using (SqlCommand addressCommand = new SqlCommand(updateAddressQuery, sqlConnection, transaction))
                         {
-                            MessageBox.Show("Bank updated successfully!");
-                            LoadBankData();
+                            addressCommand.Parameters.AddWithValue("@Address", BankAddress.Text);
+                            addressCommand.Parameters.AddWithValue("@Code", Code.Text);
+
+                            int addressRowsAffected = addressCommand.ExecuteNonQuery();
+
+                            // Check if both updates were successful
+                            if (bankRowsAffected > 0 && addressRowsAffected > 0)
+                            {
+                                // Commit the transaction
+                                transaction.Commit();
+                                MessageBox.Show("Bank and address updated successfully!");
+                                LoadBankData();
+                            }
+                            else
+                            {
+                                // Rollback the transaction if either update failed
+                                transaction.Rollback();
+                                MessageBox.Show("No bank or address found with the provided details.");
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("No bank found with the provided details.");
-                        }
-                        LoadBankData();
                     }
                 }
                 catch (Exception ex)
@@ -159,6 +176,54 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void LoadBankData()
+        {
+            try
+            {
+                // Create a new SqlConnection and set the connection string
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // Define the query to retrieve data from the BANK and BANK_ADDRESSES tables and order by CODE
+                    string query = @"
+                        SELECT 
+                            b.CODE AS Bank_Code,
+                            b.BANK_NAME AS Bank_Name,
+                            ba.BANK_ADDRESS AS Bank_Address
+                        FROM 
+                            BANK b
+                        INNER JOIN 
+                            BANK_ADDRESSES ba
+                        ON 
+                            b.CODE = ba.BANK_CODE
+                        ORDER BY 
+                            b.CODE ASC";
+
+                    // Create a SqlDataAdapter to execute the query and fill the DataTable
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        // Create a DataTable to hold the retrieved data
+                        DataTable bankTable = new DataTable();
+
+                        // Fill the DataTable with data from the SqlDataAdapter
+                        adapter.Fill(bankTable);
+
+                        // Set the DataSource of the DataGridView to the DataTable
+                        dataGridView1.DataSource = bankTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show an error message if something goes wrong
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+        /*
         private void LoadBankData()
         {
             try
@@ -192,6 +257,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        */
         private void ClearFeilds()
         {
             BankName.Text = "";

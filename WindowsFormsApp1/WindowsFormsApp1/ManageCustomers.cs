@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         private void ManageCustomers_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'bankSystemDataSet.CUSTOMER' table. You can move, or remove it, as needed.
-            this.cUSTOMERTableAdapter.Fill(this.bankSystemDataSet.CUSTOMER);
+           /* this.cUSTOMERTableAdapter.Fill(this.bankSystemDataSet.CUSTOMER);*/
 
         }
 
