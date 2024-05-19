@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Account_Info : Form
     {
-        private string connectionString = "Data Source=LAPTOP-0O63OIFI\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=DESKTOP-1H7L7GA\\SQLEXPRESS;Initial Catalog=BankSystem;Integrated Security=True;Encrypt=False";
         int CustomerID;
         public Account_Info(int customerID)
         {
@@ -61,9 +61,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
     }
 }
