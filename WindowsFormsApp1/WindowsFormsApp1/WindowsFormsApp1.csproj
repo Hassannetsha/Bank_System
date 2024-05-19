@@ -130,6 +130,12 @@
     <Compile Include="Request Loan.Designer.cs">
       <DependentUpon>Request Loan.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransactionForm.Designer.cs">
+      <DependentUpon>TransactionForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Account Info.resx">
       <DependentUpon>Account Info.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +180,9 @@
     </Compile>
     <EmbeddedResource Include="Request Loan.resx">
       <DependentUpon>Request Loan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransactionForm.resx">
+      <DependentUpon>TransactionForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BankSystemDataSet.xsc">
       <DependentUpon>BankSystemDataSet.xsd</DependentUpon>

@@ -36,5 +36,11 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void btnTransction_Click(object sender, EventArgs e)
+        {
+            TransactionForm transForm = new TransactionForm(customerId);
+            transForm.Show();
+        }
     }
 }

@@ -61,6 +61,9 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-     
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
